@@ -20,9 +20,9 @@ from weather import views
 
 
 router = routers.DefaultRouter()
-router.register(r'weather', views.GetWeather, basename='Weather')
-# router.register(r'weather/(?P<id>\d+)/?$', views.GetWeather, basename='Weather')
-router.register(r'groups', views.GroupViewSet)
+
+router.register(r'weather', views.GetWeather)
+
 
 urlpatterns = [
 
