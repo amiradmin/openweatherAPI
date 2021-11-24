@@ -14,6 +14,7 @@ import json
 class GetWeather(viewsets.ModelViewSet):
     queryset = Weather.objects.all()
     serializer_class = WeatherSerializer
+    lookup_field = 'city'
 
     def list(self, request):
         queryset = Weather.objects.all()
@@ -21,8 +22,9 @@ class GetWeather(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     def retrieve(self, request, *args, **kwargs):
-        city = kwargs['pk']
-        if not city.isdigit():
+        print(kwargs['city'])
+        city = kwargs['city']
+        if  city.isalpha():
             jsonData = {}
             weatherObj = OpenWeather()
             result = weatherObj.getWeather(city)
@@ -45,4 +47,5 @@ class GetWeather(viewsets.ModelViewSet):
             obj.save()
             return Response(jsonResult, status=status.HTTP_200_OK)
         else:
+            print("here")
             return Response(status=status.HTTP_400_BAD_REQUEST)

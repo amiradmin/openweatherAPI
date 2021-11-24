@@ -21,7 +21,8 @@ from weather import views
 
 router = routers.DefaultRouter()
 
-router.register(r'weather', views.GetWeather)
+router.register(r'weather', views.GetWeather,'weather')
+# router.register(r'weather/(?P<slug>[\w-]+)', views.GetWeather,'weather-detail')
 
 
 urlpatterns = [

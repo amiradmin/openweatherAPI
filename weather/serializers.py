@@ -8,6 +8,6 @@ class WeatherSerializer(serializers.ModelSerializer):
     class Meta:
         model = Weather
         fields = '__all__'
-        lookup_fields = ('pk', 'city')
+
 
 
