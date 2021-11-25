@@ -14,23 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include
 from rest_framework import routers
 from weather import views
 
-
 router = routers.DefaultRouter()
-
-router.register(r'weather', views.GetWeather,'weather')
-# router.register(r'weather/(?P<slug>[\w-]+)', views.GetWeather,'weather-detail')
-
+router.register(r'weather', views.GetWeather, 'weather')  # Getting request with slug city from client.
 
 urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
-    # path('', include("weather.urls",namespace="weather_")),
-    # path('api/', include("router.urls",namespace="Weather")),
-    # path('api/', include((router.urls, 'weather'))),
+
 ]
 urlpatterns += router.urls
