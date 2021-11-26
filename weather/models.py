@@ -1,9 +1,12 @@
 from django.db import models
 
+
 # Create your models here.
 class Weather(models.Model):
-
-    city = models.CharField(max_length=512,null=True, blank=True)
+    """
+    This Class Create tabel for wather in database and handle it.
+    """
+    city = models.CharField(max_length=512, null=True, blank=True)
     temperature = models.FloatField(null=True, blank=True)
     datetime = models.DateTimeField(null=True, blank=True)
 

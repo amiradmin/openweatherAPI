@@ -8,33 +8,37 @@ from rest_framework import viewsets
 from weather.serializers import WeatherSerializer
 import datetime
 import json
+
+
 # Create your views here.
 
 
 class GetWeather(viewsets.ModelViewSet):
+    """
+    Get response to the OpenWeather webservice and insert selected data to the database.
+    """
     queryset = Weather.objects.all()
     serializer_class = WeatherSerializer
     lookup_field = 'city'
 
-    def list(self, request):
+    def list(self, request):  # type: GetWeather  # type: Any
         queryset = Weather.objects.all()
         serializer = WeatherSerializer(queryset, many=True)
         return Response(serializer.data)
 
-    def retrieve(self, request, *args, **kwargs):
+    def retrieve(self, request, *args, **kwargs):  # type: Tuple[Any, ...]  # type: Dict[str, Any]
         print(kwargs['city'])
         city = kwargs['city']
-        if  city.isalpha():
+        if city.isalpha():
             jsonData = {}
             weatherObj = OpenWeather()
             result = weatherObj.getWeather(city)
             temperature = result['main']['temp']
             requestTime = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
 
-
-            jsonData['temperature']=temperature
-            jsonData['city']=city
-            jsonData['datetime']=requestTime
+            jsonData['temperature'] = temperature
+            jsonData['city'] = city
+            jsonData['datetime'] = requestTime
 
             jsonResult = json.dumps(jsonData)
             jsonResult = json.loads(jsonResult)
