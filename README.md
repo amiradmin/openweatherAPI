@@ -46,6 +46,7 @@ Please got to mysite/tests folder
 >python3 -m pytest database_test.py 
 
 ####Credencials:
+<br>
 For Login to Django Admin Panel
 <bir>
 http://localhost/admin
