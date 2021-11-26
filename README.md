@@ -59,11 +59,6 @@ Password: "Eddy@747" (Eddy is my lovely dog)
 * Python Programming Language
 * Django Rest Framework for designing a restful application
 * Numpy library to create a uniform array for get temperature
-*  <br />
-<br />
-I case of enough time I would use Queue for threading and MQTT Monitor for message queue monitoring
-and also create on class include everything like controllers and sensors.
-
 
 ####Next Stage
 Dockerized the project and create two containers for database and 
